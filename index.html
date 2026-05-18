@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARIF CAR RENTAL – Ende, Flores, NTT | Sewa Mobil Profesional</title>
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style type="text/tailwindcss">
+  @theme {
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+    --color-gold: #C9922A;
+    --color-gold-light: #E8B84B;
+    --color-gold-dim: rgba(201,146,42,0.25);
+    --color-dark: #0F0C07;
+    --color-dark2: #1A1208;
+    --color-cream: #F5F0E8;
+    --color-muted: #7A6A4A;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--color-dark); color: var(--color-cream); overflow-x: hidden; transition: background 0.3s, color 0.3s; }
+
+  /* ── LIGHT MODE ── */
+  html.light body { background: #FAF7F2; color: #1A1208; }
+  html.light nav { background: rgba(250,247,242,0.96) !important; border-color: rgba(201,146,42,0.25) !important; }
+  html.light #mobileMenu { background: #FAF7F2 !important; }
+  html.light .section-bg-alt { background: #F0EBE0 !important; }
+  html.light .card-bg { background: rgba(201,146,42,0.06) !important; border-color: rgba(201,146,42,0.25) !important; }
+  html.light .input-bg { background: rgba(201,146,42,0.06) !important; color: #1A1208 !important; }
+  html.light .select-bg { background: #EDE8DF !important; color: #1A1208 !important; }
+  html.light .features-strip { background: rgba(201,146,42,0.08) !important; }
+  html.light footer { background: #EDE8DF !important; }
+  html.light .marquee-fade-l { background: linear-gradient(to right,#FAF7F2,transparent) !important; }
+  html.light .marquee-fade-r { background: linear-gradient(to left,#FAF7F2,transparent) !important; }
+  /* text overrides */
+  html.light *:not(a):not(button):not(.keep-gold) { --tw-text-opacity:1; }
+  html.light .text-\[\#F5F0E8\],
+  html.light .text-\[\#F5F0E8\]\/80,
+  html.light .text-\[\#F5F0E8\]\/85,
+  html.light .text-\[\#F5F0E8\]\/88 { color: #1A1208 !important; }
+  html.light .text-\[\#7A6A4A\] { color: #6B5A3A !important; }
+  html.light [class*="text-[#F5F0E8]"] { color: #1A1208 !important; }
+  html.light [class*="text-[#7A6A4A]"] { color: #6B5A3A !important; }
+  html.light .nav-link-light { color: #2E2010 !important; }
+  html.light section h1,
+  html.light section h2,
+  html.light section h3,
+  html.light section p,
+  html.light section span:not(.keep-gold),
+  html.light section label,
+  html.light section div:not(.keep-gold) { color: inherit; }
+  html.light .bg-white\/\[0\.03\],
+  html.light .bg-white\/5 { background: rgba(201,146,42,0.05) !important; }
+  html.light .stat-card-light { background: rgba(201,146,42,0.1) !important; }
+  html.light .testi-card-light { background: rgba(201,146,42,0.05) !important; border-color: rgba(201,146,42,0.2) !important; }
+  html.light .dest-card-light { background: rgba(201,146,42,0.05) !important; border-color: rgba(201,146,42,0.2) !important; }
+  /* Global light mode: semua text yang bukan gold/gold-light jadi gelap */
+  html.light body,
+  html.light section,
+  html.light nav,
+  html.light footer,
+  html.light #mobileMenu { color: #1A1208; }
+  html.light p, html.light h1, html.light h2, html.light h3, html.light h4,
+  html.light span:not([class*="text-[#E8B84B]"]):not([class*="text-[#C9922A]"]),
+  html.light label, html.light li, html.light a:not([class*="text-[#E8B84B]"]):not([class*="bg-[#C9922A]"]):not([class*="bg-[#25D366]"]) { color: #1A1208 !important; }
+  html.light [class*="text-[#7A6A4A]"] { color: #7A6040 !important; }
+  html.light [class*="text-[#F5F0E8]"] { color: #1A1208 !important; }
+  html.light [class*="/80"], html.light [class*="/85"], html.light [class*="/88"] { opacity: 1; }
+  /* Hero section: tetap dark mode (ada background image gelap) */
+  html.light #hero-section,
+  html.light #hero-section *:not([class*="text-[#E8B84B]"]):not([class*="text-[#C9922A]"]) { color: #F5F0E8 !important; }
+  html.light #hero-section [class*="text-[#7A6A4A]"] { color: #9A8A6A !important; }
+  html.light #hero-section [class*="text-[#F5F0E8]"] { color: #F5F0E8 !important; }
+  /* Features strip juga tetap dark */
+  html.light .features-strip { background: rgba(15,12,7,0.9) !important; border-color: rgba(201,146,42,0.2) !important; }
+  html.light .features-strip * { color: rgba(245,240,232,0.8) !important; }
+  .font-display { font-family: var(--font-display); }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+  }
+  .animate-fade-up { animation: fadeUp 0.8s ease-out forwards; }
+  .pulse-dot { animation: pulse-dot 2s infinite; }
+  .hero-bg {
+    background-image: url('https://discoverflores.guide/wp-content/uploads/2025/10/ARIF_CAR_RENTAL_ENDE-FLORES-NTT_.jpg');
+    background-size: cover;
+    background-position: center 35%;
+    filter: brightness(1) contrast(1.1);
+    transition: transform 14s ease-out;
+  }
+  .hero-bg:hover { transform: scale(1.04); }
+  .grid-texture {
+    background-image:
+      linear-gradient(rgba(201,146,42,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,146,42,0.06) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .marquee-track {
+    animation: marquee 30s linear infinite;
+  }
+  .marquee-track:hover { animation-play-state: paused; }
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="fixed top-0 inset-x-0 z-50 flex items-center justify-between px-[5%] py-4 bg-[#0F0C07]/95 backdrop-blur-xl border-b border-[rgba(201,146,42,0.2)]">
+  <div data-cfg="logo" class="font-display text-[1.25rem] font-black text-[#E8B84B] leading-tight tracking-tight">
+    ARIF CAR RENTAL
+    <span class="block text-[0.6rem] font-normal tracking-[0.22em] text-[#7A6A4A] uppercase mt-0.5" style="font-family:'Inter',sans-serif">Ende · Flores · NTT</span>
+  </div>
+
+  <ul class="hidden md:flex gap-8 list-none">
+    <li><a href="#armada"    class="text-[0.875rem] font-medium text-[#F5F0E8]/80 hover:text-[#E8B84B] transition-colors">Armada</a></li>
+    <li><a href="#destinasi" class="text-[0.875rem] font-medium text-[#F5F0E8]/80 hover:text-[#E8B84B] transition-colors">Destinasi</a></li>
+    <li><a href="#galeri"    class="text-[0.875rem] font-medium text-[#F5F0E8]/80 hover:text-[#E8B84B] transition-colors">Galeri</a></li>
+    <li><a href="#booking"   class="text-[0.875rem] font-medium text-[#F5F0E8]/80 hover:text-[#E8B84B] transition-colors">Booking</a></li>
+    <li><a href="#testimoni" class="text-[0.875rem] font-medium text-[#F5F0E8]/80 hover:text-[#E8B84B] transition-colors">Testimoni</a></li>
+    <li><a href="#kontak"    class="text-[0.875rem] font-medium text-[#F5F0E8]/80 hover:text-[#E8B84B] transition-colors">Kontak</a></li>
+  </ul>
+
+  <div class="flex items-center gap-8">
+      <a href="#booking" class="hidden md:inline-block bg-[#C9922A] hover:bg-[#E8B84B] text-[#0F0C07] text-[0.82rem] font-bold px-5 py-2 rounded-sm transition-all hover:-translate-y-0.5">
+        Book Sekarang
+      </a>
+    
+      <button id="themeToggle" aria-label="Toggle theme" class="hidden md:flex items-center justify-center w-9 h-9 rounded-full border border-[rgba(201,146,42,0.3)] hover:border-[#C9922A] transition-colors">
+        <i data-lucide="sun" id="iconSun" class="w-4 h-4 text-[#E8B84B] hidden"></i>
+        <i data-lucide="moon" id="iconMoon" class="w-4 h-4 text-[#E8B84B]"></i>
+      </button>
+  </div>
+
+  <button id="hamburgerBtn" aria-label="Menu" class="md:hidden flex items-center justify-center w-9 h-9 z-[51]">
+    <i data-lucide="menu" id="iconMenu" class="w-6 h-6 text-[#E8B84B]"></i>
+    <i data-lucide="x" id="iconClose" class="w-6 h-6 text-[#E8B84B] hidden"></i>
+  </button>
+</nav>
+
+<div id="mobileMenu" class="fixed inset-0 z-[49] flex flex-col bg-[#0F0C07] transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)]"
+     style="clip-path:circle(0% at calc(100% - 2.5rem) 2.5rem)">
+
+  <div class="flex items-center justify-between px-[5%] py-4 border-b border-[rgba(201,146,42,0.15)]">
+    <div data-cfg="logo" class="font-display text-[1.1rem] font-black text-[#E8B84B]">ARIF CAR RENTAL</div>
+  </div>
+
+  <nav class="flex-1 flex flex-col justify-center px-[8%] gap-1">
+    <a href="#armada"    class="mobile-nav-link group flex items-center justify-between py-4 border-b border-[rgba(201,146,42,0.1)]">
+      <span class="text-[2rem] font-display font-bold text-[#F5F0E8] group-hover:text-[#E8B84B] transition-colors leading-none">Armada</span>
+      <i data-lucide="arrow-right" class="w-5 h-5 text-[#7A6A4A] group-hover:text-[#E8B84B] group-hover:translate-x-1 transition-all"></i>
+    </a>
+    <a href="#destinasi" class="mobile-nav-link group flex items-center justify-between py-4 border-b border-[rgba(201,146,42,0.1)]">
+      <span class="text-[2rem] font-display font-bold text-[#F5F0E8] group-hover:text-[#E8B84B] transition-colors leading-none">Destinasi</span>
+      <i data-lucide="arrow-right" class="w-5 h-5 text-[#7A6A4A] group-hover:text-[#E8B84B] group-hover:translate-x-1 transition-all"></i>
+    </a>
+    <a href="#galeri"    class="mobile-nav-link group flex items-center justify-between py-4 border-b border-[rgba(201,146,42,0.1)]">
+      <span class="text-[2rem] font-display font-bold text-[#F5F0E8] group-hover:text-[#E8B84B] transition-colors leading-none">Galeri</span>
+      <i data-lucide="arrow-right" class="w-5 h-5 text-[#7A6A4A] group-hover:text-[#E8B84B] group-hover:translate-x-1 transition-all"></i>
+    </a>
+    <a href="#booking"   class="mobile-nav-link group flex items-center justify-between py-4 border-b border-[rgba(201,146,42,0.1)]">
+      <span class="text-[2rem] font-display font-bold text-[#F5F0E8] group-hover:text-[#E8B84B] transition-colors leading-none">Booking</span>
+      <i data-lucide="arrow-right" class="w-5 h-5 text-[#7A6A4A] group-hover:text-[#E8B84B] group-hover:translate-x-1 transition-all"></i>
+    </a>
+    <a href="#testimoni" class="mobile-nav-link group flex items-center justify-between py-4 border-b border-[rgba(201,146,42,0.1)]">
+      <span class="text-[2rem] font-display font-bold text-[#F5F0E8] group-hover:text-[#E8B84B] transition-colors leading-none">Testimoni</span>
+      <i data-lucide="arrow-right" class="w-5 h-5 text-[#7A6A4A] group-hover:text-[#E8B84B] group-hover:translate-x-1 transition-all"></i>
+    </a>
+    <a href="#kontak"    class="mobile-nav-link group flex items-center justify-between py-4">
+      <span class="text-[2rem] font-display font-bold text-[#F5F0E8] group-hover:text-[#E8B84B] transition-colors leading-none">Kontak</span>
+      <i data-lucide="arrow-right" class="w-5 h-5 text-[#7A6A4A] group-hover:text-[#E8B84B] group-hover:translate-x-1 transition-all"></i>
+    </a>
+  </nav>
+
+  <div class="px-[5%] pb-10 pt-4 border-t border-[rgba(201,146,42,0.15)]">
+    <a href="https://wa.me/6281234567890" class="mobile-nav-link flex items-center justify-center gap-2 w-full bg-[#C9922A] hover:bg-[#E8B84B] text-[#0F0C07] font-bold text-[1rem] py-4 rounded-xl transition-colors">
+      <i data-lucide="message-circle" class="w-5 h-5"></i>
+      Chat via WhatsApp
+    </a>
+    <div class="flex items-center justify-between mt-4">
+      <p class="text-[0.7rem] text-[#7A6A4A]">Ende · Flores · NTT · Siap 24 Jam</p>
+      <button id="themeToggleMobile" aria-label="Toggle theme" class="flex items-center gap-1.5 text-[0.72rem] text-[#7A6A4A] hover:text-[#E8B84B] transition-colors">
+        <i data-lucide="sun" id="iconSunMobile" class="w-4 h-4 hidden"></i>
+        <i data-lucide="moon" id="iconMoonMobile" class="w-4 h-4"></i>
+        <span id="themeLabel">Light Mode</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section id="hero-section" class="relative min-h-screen flex items-center px-[5%] pt-28 pb-20 overflow-hidden">
+  <div class="hero-bg absolute inset-0 z-0"></div>
+  <div class="absolute inset-0 z-[1]" style="background: radial-gradient(ellipse at 28% 48%, rgba(15,12,7,0.5) 0%, #050402 88%)"></div>
+  <div class="grid-texture absolute inset-0 z-[2] pointer-events-none"></div>
+
+  <div class="relative z-[3] max-w-[680px] animate-fade-up">
+
+    <h1 data-cfg="hero-title" class="font-display text-[clamp(2.8rem,6.5vw,5rem)] font-black leading-[1.07] text-[#F5F0E8] mb-5 tracking-tight" style="text-shadow:0 2px 20px rgba(0,0,0,0.45)">
+      Jelajahi <em class="not-italic text-[#E8B84B] relative">Flores</em><br>
+      dengan Nyaman &<br>Aman Bersama Kami
+    </h1>
+
+    <p data-cfg="description" class="text-[1.05rem] leading-[1.75] text-[#F5F0E8]/85 max-w-[520px] mb-9 font-light">
+      Rental mobil terpercaya di Ende, Flores. Armada terawat, sopir berpengalaman, harga transparan.
+      Siap antar jemput bandara &amp; wisata ke seluruh penjuru Nusa Tenggara Timur.
+    </p>
+
+    <div class="flex flex-wrap gap-4">
+      <a href="https://wa.me/6281234567890?text=Halo%20Arif%20Car%20Rental,%20saya%20ingin%20booking%20mobil"
+         class="inline-flex items-center gap-2 bg-[#C9922A] hover:bg-[#E8B84B] text-[#0F0C07] font-bold text-[0.92rem] px-7 py-3.5 rounded transition-all hover:-translate-y-1 shadow-[0_4px_18px_rgba(201,146,42,0.35)]">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="w-[18px] h-[18px]"><path d="M12.001 2C6.478 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.418A9.956 9.956 0 0012.001 22C17.523 22 22 17.523 22 12c0-5.523-4.477-10-9.999-10zm4.601 13.383c-.201.56-1.119 1.064-1.599 1.124-.48.06-1.041.24-3.261-.625-2.663-1.02-4.282-3.734-4.409-3.904-.127-.17-1.053-1.42-1.053-2.716 0-1.296.68-1.93.92-2.192.24-.262.52-.326.7-.326.18 0 .36 0 .52.008.172.01.404-.066.633.47.234.546.771 1.841.837 1.98.067.139.11.301.018.481-.092.18-.134.296-.266.439-.132.143-.276.316-.394.433-.131.131-.268.298-.113.558.155.26.685 1.1 1.441 1.769.975.863 1.797 1.138 2.059 1.276.262.138.414.113.567-.061.153-.174.66-.77.831-1.032.171-.262.347-.22.59-.131.243.087 1.539.732 1.802.87.263.138.437.206.501.312.064.111.064.645-.244 1.298z"/></svg>
+        Chat via WhatsApp
+      </a>
+      <a href="#armada" class="inline-flex items-center gap-2 border border-[rgba(201,146,42,0.6)] text-[#E8B84B] hover:bg-[rgba(201,146,42,0.12)] font-semibold text-[0.92rem] px-7 py-3.5 rounded transition-all hover:-translate-y-0.5 backdrop-blur-sm">
+        Lihat Armada <span>→</span>
+      </a>
+    </div>
+  </div>
+
+
+</section>
+
+<!-- ===== FEATURES STRIP ===== -->
+<div class="features-strip bg-[rgba(201,146,42,0.06)] border-y border-[rgba(201,146,42,0.18)] px-[5%] py-5 flex flex-wrap justify-around gap-4">
+  <div class="flex items-center gap-2 text-[0.82rem] text-[#F5F0E8]/80 font-medium"><i data-lucide="shield-check" class="w-4 h-4 text-[#C9922A] shrink-0"></i> Asuransi Perjalanan</div>
+  <div class="flex items-center gap-2 text-[0.82rem] text-[#F5F0E8]/80 font-medium"><i data-lucide="clock" class="w-4 h-4 text-[#C9922A] shrink-0"></i> Siap 24 Jam</div>
+  <div class="flex items-center gap-2 text-[0.82rem] text-[#F5F0E8]/80 font-medium"><i data-lucide="plane" class="w-4 h-4 text-[#C9922A] shrink-0"></i> Antar Jemput Bandara</div>
+  <div class="flex items-center gap-2 text-[0.82rem] text-[#F5F0E8]/80 font-medium"><i data-lucide="navigation" class="w-4 h-4 text-[#C9922A] shrink-0"></i> Sopir Hafal Jalur Flores</div>
+  <div class="flex items-center gap-2 text-[0.82rem] text-[#F5F0E8]/80 font-medium"><i data-lucide="badge-check" class="w-4 h-4 text-[#C9922A] shrink-0"></i> Harga Transparan</div>
+</div>
+
+<!-- ===== ARMADA ===== -->
+<section id="armada" class="px-[5%] py-20">
+  <p class="text-[0.72rem] font-semibold tracking-[0.2em] uppercase text-[#C9922A] mb-2">Fleet Kami</p>
+  <h2 class="font-display text-[clamp(1.8rem,4vw,2.6rem)] font-bold text-[#F5F0E8] leading-tight mb-3">Pilih Armada Sesuai Kebutuhan</h2>
+  <div class="w-12 h-[2px] bg-[#C9922A] mb-10"></div>
+
+  <div id="fleetGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+</section>
+
+<!-- ===== DESTINASI ===== -->
+<section id="destinasi" class="section-bg-alt bg-[#0A0804] px-[5%] py-20">
+  <p class="text-[0.72rem] font-semibold tracking-[0.2em] uppercase text-[#C9922A] mb-2">Destinasi Wisata</p>
+  <h2 class="font-display text-[clamp(1.8rem,4vw,2.6rem)] font-bold text-[#F5F0E8] leading-tight mb-3">Flores yang Menakjubkan</h2>
+  <div class="w-12 h-[2px] bg-[#C9922A] mb-10"></div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="bg-[rgba(255,255,255,0.03)] border border-[rgba(201,146,42,0.15)] rounded-xl p-6 hover:border-[rgba(201,146,42,0.4)] transition-colors">
+      <div class="mb-3"><i data-lucide="mountain" class="w-8 h-8 text-[#C9922A]"></i></div>
+      <h3 class="font-semibold text-[#F5F0E8] mb-1">Danau Kelimutu</h3>
+      <p class="text-[0.8rem] text-[#7A6A4A] leading-relaxed">Tiga danau kawah dengan warna berbeda di puncak gunung berapi Ende.</p>
+    </div>
+    <div class="bg-[rgba(255,255,255,0.03)] border border-[rgba(201,146,42,0.15)] rounded-xl p-6 hover:border-[rgba(201,146,42,0.4)] transition-colors">
+      <div class="mb-3"><i data-lucide="binoculars" class="w-8 h-8 text-[#C9922A]"></i></div>
+      <h3 class="font-semibold text-[#F5F0E8] mb-1">Komodo & Labuan Bajo</h3>
+      <p class="text-[0.8rem] text-[#7A6A4A] leading-relaxed">Habitat asli komodo, snorkeling, dan sunset terbaik di Indonesia.</p>
+    </div>
+    <div class="bg-[rgba(255,255,255,0.03)] border border-[rgba(201,146,42,0.15)] rounded-xl p-6 hover:border-[rgba(201,146,42,0.4)] transition-colors">
+      <div class="mb-3"><i data-lucide="waves" class="w-8 h-8 text-[#C9922A]"></i></div>
+      <h3 class="font-semibold text-[#F5F0E8] mb-1">17 Pulau Riung</h3>
+      <p class="text-[0.8rem] text-[#7A6A4A] leading-relaxed">Gugusan pulau kecil dengan air jernih dan terumbu karang yang indah.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALERI ===== -->
+<section id="galeri" class="section-bg-alt px-[5%] py-20 bg-[#0A0804]">
+  <p class="text-[0.72rem] font-semibold tracking-[0.2em] uppercase text-[#C9922A] mb-2">Galeri</p>
+  <h2 class="font-display text-[clamp(1.8rem,4vw,2.6rem)] font-bold text-[#F5F0E8] leading-tight mb-3">Armada & Perjalanan</h2>
+  <div class="w-12 h-[2px] bg-[#C9922A] mb-4"></div>
+
+  <div class="flex flex-wrap gap-2 mb-8">
+    <button onclick="filterGaleri('semua')" data-filter="semua"
+      class="galeri-filter active-filter text-[0.78rem] font-semibold px-4 py-1.5 rounded-full border border-[#C9922A] bg-[#C9922A] text-[#0F0C07] transition-all">Semua</button>
+    <button onclick="filterGaleri('armada')" data-filter="armada"
+      class="galeri-filter text-[0.78rem] font-semibold px-4 py-1.5 rounded-full border border-[rgba(201,146,42,0.4)] text-[#7A6A4A] hover:border-[#C9922A] hover:text-[#E8B84B] transition-all">Armada</button>
+    <button onclick="filterGaleri('wisata')" data-filter="wisata"
+      class="galeri-filter text-[0.78rem] font-semibold px-4 py-1.5 rounded-full border border-[rgba(201,146,42,0.4)] text-[#7A6A4A] hover:border-[#C9922A] hover:text-[#E8B84B] transition-all">Wisata Flores</button>
+    <button onclick="filterGaleri('pelanggan')" data-filter="pelanggan"
+      class="galeri-filter text-[0.78rem] font-semibold px-4 py-1.5 rounded-full border border-[rgba(201,146,42,0.4)] text-[#7A6A4A] hover:border-[#C9922A] hover:text-[#E8B84B] transition-all">Pelanggan</button>
+  </div>
+
+  <div id="galeriGrid" class="columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3"></div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" class="fixed inset-0 bg-black/90 z-[100] hidden items-center justify-center p-4" onclick="closeLightbox()">
+  <button class="absolute top-5 right-6 text-white text-3xl font-light leading-none">&times;</button>
+  <img id="lightboxImg" src="" alt="" class="max-w-full max-h-[88vh] rounded-xl object-contain shadow-2xl">
+</div>
+
+<!-- ===== BOOKING ===== -->
+<section id="booking" class="px-[5%] py-20 bg-[rgba(201,146,42,0.04)]">
+  <div class="max-w-3xl mx-auto">
+    <p class="text-[0.72rem] font-semibold tracking-[0.2em] uppercase text-[#C9922A] mb-2">Reservasi</p>
+    <h2 class="font-display text-[clamp(1.8rem,4vw,2.6rem)] font-bold text-[#F5F0E8] leading-tight mb-3">Book Sekarang</h2>
+    <div class="w-12 h-[2px] bg-[#C9922A] mb-2"></div>
+    <p class="text-[0.85rem] text-[#7A6A4A] mb-8">Isi form di bawah, kami akan konfirmasi via WhatsApp dalam &lt;30 menit.</p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="flex flex-col gap-1">
+        <label class="text-[0.75rem] font-medium text-[#7A6A4A] uppercase tracking-wider">Nama Lengkap <span class="text-[#C9922A]">*</span></label>
+        <input id="bName" type="text" placeholder="cth. Budi Santoso"
+          class="input-bg bg-white/5 border border-[rgba(201,146,42,0.25)] text-[#F5F0E8] placeholder-[#4A3A2A] rounded-lg px-4 py-3 text-[0.9rem] focus:outline-none focus:border-[#C9922A] transition-colors" />
+      </div>
+      <div class="flex flex-col gap-1">
+        <label class="text-[0.75rem] font-medium text-[#7A6A4A] uppercase tracking-wider">Nomor WhatsApp <span class="text-[#C9922A]">*</span></label>
+        <input id="bPhone" type="tel" placeholder="cth. 08123456789"
+          class="input-bg bg-white/5 border border-[rgba(201,146,42,0.25)] text-[#F5F0E8] placeholder-[#4A3A2A] rounded-lg px-4 py-3 text-[0.9rem] focus:outline-none focus:border-[#C9922A] transition-colors" />
+      </div>
+      <div class="flex flex-col gap-1">
+        <label class="text-[0.75rem] font-medium text-[#7A6A4A] uppercase tracking-wider">Pilih Armada <span class="text-[#C9922A]">*</span></label>
+        <select id="bCar" class="select-bg bg-[#1A1208] border border-[rgba(201,146,42,0.25)] text-[#F5F0E8] rounded-lg px-4 py-3 text-[0.9rem] focus:outline-none focus:border-[#C9922A] transition-colors">
+          <option value="">— Pilih Mobil —</option>
+          <option value="Toyota Fortuner (Rp 900.000/hari)">Toyota Fortuner — Rp 900.000/hari</option>
+          <option value="Toyota Avanza (Rp 550.000/hari)">Toyota Avanza — Rp 550.000/hari</option>
+          <option value="Hiace Premio (Rp 1.200.000/hari)">Hiace Premio — Rp 1.200.000/hari</option>
+        </select>
+      </div>
+      <div class="flex flex-col gap-1">
+        <label class="text-[0.75rem] font-medium text-[#7A6A4A] uppercase tracking-wider">Tipe Layanan</label>
+        <select id="bType" class="select-bg bg-[#1A1208] border border-[rgba(201,146,42,0.25)] text-[#F5F0E8] rounded-lg px-4 py-3 text-[0.9rem] focus:outline-none focus:border-[#C9922A] transition-colors">
+          <option value="">— Pilih Layanan —</option>
+          <option>Sewa Harian (dengan sopir)</option>
+          <option>Sewa Harian (lepas kunci)</option>
+          <option>Antar Jemput Bandara</option>
+          <option>Wisata Flores (paket)</option>
+          <option>Perjalanan Luar Kota</option>
+        </select>
+      </div>
+      <div class="flex flex-col gap-1">
+        <label class="text-[0.75rem] font-medium text-[#7A6A4A] uppercase tracking-wider">Tanggal Mulai <span class="text-[#C9922A]">*</span></label>
+        <input id="bStart" type="date"
+          class="input-bg bg-white/5 border border-[rgba(201,146,42,0.25)] text-[#F5F0E8] rounded-lg px-4 py-3 text-[0.9rem] focus:outline-none focus:border-[#C9922A] transition-colors" />
+      </div>
+      <div class="flex flex-col gap-1">
+        <label class="text-[0.75rem] font-medium text-[#7A6A4A] uppercase tracking-wider">Tanggal Selesai</label>
+        <input id="bEnd" type="date"
+          class="input-bg bg-white/5 border border-[rgba(201,146,42,0.25)] text-[#F5F0E8] rounded-lg px-4 py-3 text-[0.9rem] focus:outline-none focus:border-[#C9922A] transition-colors" />
+      </div>
+      <div class="flex flex-col gap-1">
+        <label class="text-[0.75rem] font-medium text-[#7A6A4A] uppercase tracking-wider">Jumlah Penumpang</label>
+        <select id="bPax" class="select-bg bg-[#1A1208] border border-[rgba(201,146,42,0.25)] text-[#F5F0E8] rounded-lg px-4 py-3 text-[0.9rem] focus:outline-none focus:border-[#C9922A] transition-colors">
+          <option value="">— Pilih —</option>
+          <option>1–2 orang</option>
+          <option>3–5 orang</option>
+          <option>6–7 orang</option>
+          <option>8–14 orang</option>
+        </select>
+      </div>
+      <div class="flex flex-col gap-1">
+        <label class="text-[0.75rem] font-medium text-[#7A6A4A] uppercase tracking-wider">Lokasi Penjemputan</label>
+        <input id="bPickup" type="text" placeholder="cth. Bandara H. Hasan Aroeboesman"
+          class="input-bg bg-white/5 border border-[rgba(201,146,42,0.25)] text-[#F5F0E8] placeholder-[#4A3A2A] rounded-lg px-4 py-3 text-[0.9rem] focus:outline-none focus:border-[#C9922A] transition-colors" />
+      </div>
+      <div class="flex flex-col gap-1 sm:col-span-2">
+        <label class="text-[0.75rem] font-medium text-[#7A6A4A] uppercase tracking-wider">Catatan Tambahan</label>
+        <textarea id="bNote" rows="3" placeholder="Destinasi tujuan, permintaan khusus, dll."
+          class="input-bg bg-white/5 border border-[rgba(201,146,42,0.25)] text-[#F5F0E8] placeholder-[#4A3A2A] rounded-lg px-4 py-3 text-[0.9rem] focus:outline-none focus:border-[#C9922A] transition-colors resize-none"></textarea>
+      </div>
+      <div id="estimasiBox" class="sm:col-span-2 hidden bg-[rgba(201,146,42,0.08)] border border-[rgba(201,146,42,0.3)] rounded-lg px-5 py-4">
+        <p class="text-[0.72rem] uppercase tracking-wider text-[#7A6A4A] mb-1">Estimasi Biaya</p>
+        <p id="estimasiText" class="text-[#E8B84B] font-display text-[1.4rem] font-bold"></p>
+        <p class="text-[0.72rem] text-[#7A6A4A] mt-1">*Harga final dikonfirmasi via WhatsApp. Belum termasuk BBM (lepas kunci).</p>
+      </div>
+      <button onclick="submitBooking()"
+        class="sm:col-span-2 bg-[#C9922A] hover:bg-[#E8B84B] text-[#0F0C07] font-bold text-[0.95rem] py-4 rounded-lg transition-all hover:-translate-y-0.5 shadow-[0_4px_16px_rgba(201,146,42,0.3)] flex items-center justify-center gap-2">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5"><path d="M12.001 2C6.478 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.418A9.956 9.956 0 0012.001 22C17.523 22 22 17.523 22 12c0-5.523-4.477-10-9.999-10zm4.601 13.383c-.201.56-1.119 1.064-1.599 1.124-.48.06-1.041.24-3.261-.625-2.663-1.02-4.282-3.734-4.409-3.904-.127-.17-1.053-1.42-1.053-2.716 0-1.296.68-1.93.92-2.192.24-.262.52-.326.7-.326.18 0 .36 0 .52.008.172.01.404-.066.633.47.234.546.771 1.841.837 1.98.067.139.11.301.018.481-.092.18-.134.296-.266.439-.132.143-.276.316-.394.433-.131.131-.268.298-.113.558.155.26.685 1.1 1.441 1.769.975.863 1.797 1.138 2.059 1.276.262.138.414.113.567-.061.153-.174.66-.77.831-1.032.171-.262.347-.22.59-.131.243.087 1.539.732 1.802.87.263.138.437.206.501.312.064.111.064.645-.244 1.298z"/></svg>
+        Kirim Booking via WhatsApp
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONI ===== -->
+<section id="testimoni" class="px-[5%] py-20">
+  <p class="text-[0.72rem] font-semibold tracking-[0.2em] uppercase text-[#C9922A] mb-2">Testimoni</p>
+  <h2 class="font-display text-[clamp(1.8rem,4vw,2.6rem)] font-bold text-[#F5F0E8] leading-tight mb-3">Kata Pelanggan Kami</h2>
+  <div class="w-12 h-[2px] bg-[#C9922A] mb-10"></div>
+
+  <div class="overflow-hidden relative">
+    <div class="marquee-fade-l absolute left-0 top-0 bottom-0 w-16 z-10 pointer-events-none" style="background:linear-gradient(to right,#0F0C07,transparent)"></div>
+    <div class="marquee-fade-r absolute right-0 top-0 bottom-0 w-16 z-10 pointer-events-none" style="background:linear-gradient(to left,#0F0C07,transparent)"></div>
+
+    <div class="flex gap-5 marquee-track" style="width:max-content">
+      <div class="bg-white/[0.03] border border-[rgba(201,146,42,0.15)] rounded-xl p-6 w-80 shrink-0">
+        <div class="text-[#E8B84B] text-sm mb-3">★★★★★</div>
+        <p class="text-[0.88rem] text-[#F5F0E8]/80 leading-relaxed mb-4">"Pelayanan ramah, mobil bersih, perjalanan ke Kelimutu sangat nyaman. Sopirnya juga tahu banyak soal Flores!"</p>
+        <p class="text-[0.75rem] font-semibold text-[#7A6A4A]">— Rizky, Jakarta</p>
+      </div>
+      <div class="bg-white/[0.03] border border-[rgba(201,146,42,0.15)] rounded-xl p-6 w-80 shrink-0">
+        <div class="text-[#E8B84B] text-sm mb-3">★★★★★</div>
+        <p class="text-[0.88rem] text-[#F5F0E8]/80 leading-relaxed mb-4">"Harga sesuai, tidak ada biaya tersembunyi. Kami sewa Hiace untuk rombongan 12 orang, sangat puas!"</p>
+        <p class="text-[0.75rem] font-semibold text-[#7A6A4A]">— Dewi, Surabaya</p>
+      </div>
+      <div class="bg-white/[0.03] border border-[rgba(201,146,42,0.15)] rounded-xl p-6 w-80 shrink-0">
+        <div class="text-[#E8B84B] text-sm mb-3">★★★★★</div>
+        <p class="text-[0.88rem] text-[#F5F0E8]/80 leading-relaxed mb-4">"Antar jemput bandara tepat waktu. Fortuner-nya nyaman banget buat jalan ke Labuan Bajo. Recommended!"</p>
+        <p class="text-[0.75rem] font-semibold text-[#7A6A4A]">— Budi, Bali</p>
+      </div>
+      <div class="bg-white/[0.03] border border-[rgba(201,146,42,0.15)] rounded-xl p-6 w-80 shrink-0">
+        <div class="text-[#E8B84B] text-sm mb-3">★★★★★</div>
+        <p class="text-[0.88rem] text-[#F5F0E8]/80 leading-relaxed mb-4">"Sopir sangat profesional dan sabar. Kami keliling Flores 4 hari, semua destinasi tercapai dengan nyaman."</p>
+        <p class="text-[0.75rem] font-semibold text-[#7A6A4A]">— Sari, Bandung</p>
+      </div>
+      <div class="bg-white/[0.03] border border-[rgba(201,146,42,0.15)] rounded-xl p-6 w-80 shrink-0">
+        <div class="text-[#E8B84B] text-sm mb-3">★★★★★</div>
+        <p class="text-[0.88rem] text-[#F5F0E8]/80 leading-relaxed mb-4">"Booking mudah via WhatsApp, respon cepat. Mobilnya bersih dan terawat. Pasti balik lagi ke Flores!"</p>
+        <p class="text-[0.75rem] font-semibold text-[#7A6A4A]">— Hendra, Makassar</p>
+      </div>
+      <!-- set 2 (duplikat untuk loop seamless) -->
+      <div class="bg-white/[0.03] border border-[rgba(201,146,42,0.15)] rounded-xl p-6 w-80 shrink-0">
+        <div class="text-[#E8B84B] text-sm mb-3">★★★★★</div>
+        <p class="text-[0.88rem] text-[#F5F0E8]/80 leading-relaxed mb-4">"Pelayanan ramah, mobil bersih, perjalanan ke Kelimutu sangat nyaman. Sopirnya juga tahu banyak soal Flores!"</p>
+        <p class="text-[0.75rem] font-semibold text-[#7A6A4A]">— Rizky, Jakarta</p>
+      </div>
+      <div class="bg-white/[0.03] border border-[rgba(201,146,42,0.15)] rounded-xl p-6 w-80 shrink-0">
+        <div class="text-[#E8B84B] text-sm mb-3">★★★★★</div>
+        <p class="text-[0.88rem] text-[#F5F0E8]/80 leading-relaxed mb-4">"Harga sesuai, tidak ada biaya tersembunyi. Kami sewa Hiace untuk rombongan 12 orang, sangat puas!"</p>
+        <p class="text-[0.75rem] font-semibold text-[#7A6A4A]">— Dewi, Surabaya</p>
+      </div>
+      <div class="bg-white/[0.03] border border-[rgba(201,146,42,0.15)] rounded-xl p-6 w-80 shrink-0">
+        <div class="text-[#E8B84B] text-sm mb-3">★★★★★</div>
+        <p class="text-[0.88rem] text-[#F5F0E8]/80 leading-relaxed mb-4">"Antar jemput bandara tepat waktu. Fortuner-nya nyaman banget buat jalan ke Labuan Bajo. Recommended!"</p>
+        <p class="text-[0.75rem] font-semibold text-[#7A6A4A]">— Budi, Bali</p>
+      </div>
+      <div class="bg-white/[0.03] border border-[rgba(201,146,42,0.15)] rounded-xl p-6 w-80 shrink-0">
+        <div class="text-[#E8B84B] text-sm mb-3">★★★★★</div>
+        <p class="text-[0.88rem] text-[#F5F0E8]/80 leading-relaxed mb-4">"Sopir sangat profesional dan sabar. Kami keliling Flores 4 hari, semua destinasi tercapai dengan nyaman."</p>
+        <p class="text-[0.75rem] font-semibold text-[#7A6A4A]">— Sari, Bandung</p>
+      </div>
+      <div class="bg-white/[0.03] border border-[rgba(201,146,42,0.15)] rounded-xl p-6 w-80 shrink-0">
+        <div class="text-[#E8B84B] text-sm mb-3">★★★★★</div>
+        <p class="text-[0.88rem] text-[#F5F0E8]/80 leading-relaxed mb-4">"Booking mudah via WhatsApp, respon cepat. Mobilnya bersih dan terawat. Pasti balik lagi ke Flores!"</p>
+        <p class="text-[0.75rem] font-semibold text-[#7A6A4A]">— Hendra, Makassar</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== KONTAK ===== -->
+<section id="kontak" class="section-bg-alt bg-[#0A0804] px-[5%] py-20">
+  <p class="text-[0.72rem] font-semibold tracking-[0.2em] uppercase text-[#C9922A] mb-2">Lokasi</p>
+  <h2 class="font-display text-[clamp(1.8rem,4vw,2.6rem)] font-bold text-[#F5F0E8] leading-tight mb-3">Temukan Kami</h2>
+  <div class="w-12 h-[2px] bg-[#C9922A] mb-8"></div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+    <div class="space-y-4">
+      <div class="flex items-start gap-3">
+        <span class="mt-0.5"><i data-lucide="map-pin" class="w-5 h-5 text-[#C9922A]"></i></span>
+        <div>
+          <p class="text-[0.8rem] text-[#7A6A4A] uppercase tracking-wider mb-0.5">Alamat</p>
+          <p class="text-[#F5F0E8] text-[0.92rem]" data-cfg="address">Ende, Flores, Nusa Tenggara Timur</p>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="mt-0.5"><i data-lucide="phone" class="w-5 h-5 text-[#C9922A]"></i></span>
+        <div>
+          <p class="text-[0.8rem] text-[#7A6A4A] uppercase tracking-wider mb-0.5">WhatsApp</p>
+          <a data-cfg="wa-link" href="https://wa.me/6281234567890" class="text-[#E8B84B] text-[0.92rem] hover:underline"><span data-cfg="wa-display">+62 812-3456-7890</span></a>
+        </div>
+      </div>
+      <div class="flex items-start gap-3">
+        <span class="mt-0.5"><i data-lucide="clock" class="w-5 h-5 text-[#C9922A]"></i></span>
+        <div>
+          <p class="text-[0.8rem] text-[#7A6A4A] uppercase tracking-wider mb-0.5">Jam Operasional</p>
+          <p data-cfg="hours" class="text-[#F5F0E8] text-[0.92rem]">Setiap hari, 24 jam siap melayani</p>
+        </div>
+      </div>
+    </div>
+    <iframe data-cfg="maps"
+      src="https://maps.google.com/maps?q=-8.8461275,121.653883&z=15&output=embed"
+      class="w-full h-64 rounded-xl border border-[rgba(201,146,42,0.2)]"
+      loading="lazy" title="Lokasi Arif Car Rental">
+    </iframe>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-[#070503] border-t border-[rgba(201,146,42,0.15)] px-[5%] py-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+  <div data-cfg="footer-name" class="font-display text-[1rem] font-bold text-[#E8B84B]">ARIF CAR RENTAL</div>
+  <p data-cfg="copyright" class="text-[0.78rem] text-[#7A6A4A]">© 2025 Arif Car Rental — Sewa Mobil Ende, Flores, NTT</p>
+  <a data-cfg="wa-link" href="https://wa.me/6281234567890" class="text-[0.78rem] text-[#7A6A4A] hover:text-[#E8B84B] transition-colors"><span data-cfg="wa-display">+62 812-3456-7890</span></a>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/6281234567890" aria-label="WhatsApp"
+   class="fixed bottom-8 right-8 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-[0_6px_20px_rgba(37,211,102,0.4)] hover:scale-110 transition-transform">
+  <svg viewBox="0 0 32 32" fill="white" class="w-7 h-7"><path d="M16.004 4C9.377 4 4 9.374 4 15.998c0 2.156.606 4.172 1.657 5.89L4 28.004l6.305-1.625c1.658.958 3.612 1.617 5.699 1.617C22.627 27.996 28 22.622 28 15.998 28 9.374 22.627 4 16.004 4zm6.136 16.51c-.26.73-1.49 1.39-2.09 1.46-.6.07-1.16.29-3.87-.625-2.663-1.02-4.282-3.734-4.409-3.904-.127-.17-1.053-1.42-1.053-2.716 0-1.296.68-1.93.92-2.192.24-.262.52-.326.7-.326.18 0 .36 0 .52.008.172.01.404-.066.633.47.234.546.771 1.841.837 1.98.067.139.11.301.018.481-.092.18-.134.296-.266.439-.132.143-.276.316-.394.433-.131.131-.268.298-.113.558.155.26.685 1.1 1.441 1.769.975.863 1.797 1.138 2.059 1.276.262.138.414.113.567-.061.153-.174.66-.77.831-1.032.171-.262.347-.22.59-.131.243.087 1.539.732 1.802.87.263.138.437.206.501.312.064.111.064.645-.244 1.298z"/></svg>
+</a>
+
+<script>
+  // ── Mobile menu ──
+  const hamburger  = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const iconMenu   = document.getElementById('iconMenu');
+  const iconClose  = document.getElementById('iconClose');
+  let menuOpen = false;
+
+  function openMenu() {
+    menuOpen = true;
+    mobileMenu.style.clipPath = 'circle(150% at calc(100% - 2.5rem) 2.5rem)';
+    document.body.style.overflow = 'hidden';
+    iconMenu.classList.add('hidden');
+    iconClose.classList.remove('hidden');
+  }
+  function closeMenu() {
+    menuOpen = false;
+    mobileMenu.style.clipPath = 'circle(0% at calc(100% - 2.5rem) 2.5rem)';
+    document.body.style.overflow = '';
+    iconMenu.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+  }
+
+  hamburger.addEventListener('click', () => menuOpen ? closeMenu() : openMenu());
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', e => {
+      closeMenu();
+      const t = link.getAttribute('href');
+      if (t?.startsWith('#')) { e.preventDefault(); document.querySelector(t)?.scrollIntoView({behavior:'smooth'}); }
+    });
+  });
+
+  // ── Dark / Light mode ──
+  let isDark = true;
+  function applyTheme(dark) {
+    isDark = dark;
+    document.documentElement.classList.toggle('light', !dark);
+    // desktop icons
+    document.getElementById('iconSun').classList.toggle('hidden', dark);
+    document.getElementById('iconMoon').classList.toggle('hidden', !dark);
+    // mobile icons + label
+    document.getElementById('iconSunMobile').classList.toggle('hidden', dark);
+    document.getElementById('iconMoonMobile').classList.toggle('hidden', !dark);
+    document.getElementById('themeLabel').textContent = dark ? 'Light Mode' : 'Dark Mode';
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+  }
+  // init from saved preference
+  const saved = localStorage.getItem('theme');
+  if (saved === 'light') applyTheme(false);
+
+  document.getElementById('themeToggle').addEventListener('click', () => applyTheme(!isDark));
+  document.getElementById('themeToggleMobile').addEventListener('click', () => applyTheme(!isDark));
+
+  // ── Galeri filter ──
+  function filterGaleri(cat) {
+    document.querySelectorAll('.galeri-filter').forEach(btn => {
+      const active = btn.dataset.filter === cat;
+      btn.classList.toggle('bg-[#C9922A]', active);
+      btn.classList.toggle('text-[#0F0C07]', active);
+      btn.classList.toggle('border-[#C9922A]', active);
+      btn.classList.toggle('text-[#7A6A4A]', !active);
+      btn.classList.toggle('border-[rgba(201,146,42,0.4)]', !active);
+    });
+    document.querySelectorAll('.galeri-item').forEach(item => {
+      item.style.display = (cat === 'semua' || item.dataset.cat === cat) ? '' : 'none';
+    });
+  }
+
+  // ── Lightbox ──
+  function openLightbox(el) {
+    const img = el.querySelector('img');
+    document.getElementById('lightboxImg').src = img.src;
+    document.getElementById('lightboxImg').alt = img.alt;
+    const lb = document.getElementById('lightbox');
+    lb.classList.remove('hidden');
+    lb.classList.add('flex');
+  }
+  function closeLightbox() {
+    const lb = document.getElementById('lightbox');
+    lb.classList.add('hidden');
+    lb.classList.remove('flex');
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+  // ── Estimasi harga otomatis ──
+  const HARGA = { 'Toyota Fortuner (Rp 900.000/hari)': 900000, 'Toyota Avanza (Rp 550.000/hari)': 550000, 'Hiace Premio (Rp 1.200.000/hari)': 1200000 };
+  function hitungEstimasi() {
+    const car   = document.getElementById('bCar').value;
+    const start = document.getElementById('bStart').value;
+    const end   = document.getElementById('bEnd').value;
+    const box   = document.getElementById('estimasiBox');
+    const txt   = document.getElementById('estimasiText');
+    if (!car || !start || !end) { box.classList.add('hidden'); return; }
+    const days = Math.max(1, Math.round((new Date(end) - new Date(start)) / 86400000));
+    const total = (HARGA[car] || 0) * days;
+    if (total > 0) {
+      txt.textContent = `Rp ${total.toLocaleString('id-ID')} (${days} hari)`;
+      box.classList.remove('hidden');
+    }
+  }
+  ['bCar','bStart','bEnd'].forEach(id => document.getElementById(id)?.addEventListener('change', hitungEstimasi));
+
+  // ── Booking submit ──
+  function submitBooking() {
+    const name   = document.getElementById('bName').value.trim();
+    const phone  = document.getElementById('bPhone').value.trim();
+    const car    = document.getElementById('bCar').value;
+    const type   = document.getElementById('bType').value;
+    const start  = document.getElementById('bStart').value;
+    const end    = document.getElementById('bEnd').value;
+    const pax    = document.getElementById('bPax').value;
+    const pickup = document.getElementById('bPickup').value.trim();
+    const note   = document.getElementById('bNote').value.trim();
+    if (!name || !phone) { alert('Nama dan nomor WhatsApp wajib diisi.'); return; }
+    if (!document.getElementById('bStart').value) { alert('Pilih tanggal mulai.'); return; }
+    let msg = `Halo Arif Car Rental! 🙏\n\nSaya ingin melakukan booking:\n`;
+    msg += `👤 Nama: ${name}\n`;
+    msg += `📱 WA: ${phone}\n`;
+    if (car)    msg += `🚗 Armada: ${car}\n`;
+    if (type)   msg += `📋 Layanan: ${type}\n`;
+    if (start)  msg += `📅 Mulai: ${start}\n`;
+    if (end)    msg += `📅 Selesai: ${end}\n`;
+    if (pax)    msg += `👥 Penumpang: ${pax}\n`;
+    if (pickup) msg += `📍 Jemput di: ${pickup}\n`;
+    if (note)   msg += `📝 Catatan: ${note}\n`;
+    window.open(`https://wa.me/6281234567890?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+  window.submitBooking = submitBooking;
+
+  // Render all Lucide icons
+  lucide.createIcons();
+
+  // ── Apply config.js ──
+  function applyConfig() {
+    const c = SITE_CONFIG;
+
+    // Title & favicon
+    document.title = c.siteTitle;
+    if (c.faviconUrl) {
+      const link = document.createElement('link');
+      link.rel = 'icon'; link.href = c.faviconUrl;
+      document.head.appendChild(link);
+    }
+
+    // Logo: teks atau gambar
+    document.querySelectorAll('[data-cfg="logo"]').forEach(el => {
+      if (c.logoUrl) {
+        el.innerHTML = `<img src="${c.logoUrl}" alt="${c.logoAlt}" height="${c.logoHeight}" style="height:${c.logoHeight}px;width:auto;">`;
+      } else {
+        el.innerHTML = `${c.businessName}<span class="block text-[0.6rem] font-normal tracking-[0.22em] text-[#7A6A4A] uppercase mt-0.5" style="font-family:'Inter',sans-serif">${c.tagline}</span>`;
+      }
+    });
+
+    // Hero bg & description
+    const heroBg = document.querySelector('.hero-bg');
+    if (heroBg) heroBg.style.backgroundImage = `url('${c.heroBgImage}')`;
+    document.querySelectorAll('[data-cfg="hero-title"]').forEach(el => el.innerHTML = c.heroTitle);
+    document.querySelectorAll('[data-cfg="description"]').forEach(el => el.textContent = c.description);
+
+    // Gallery
+    const galeriGrid = document.getElementById('galeriGrid');
+    if (galeriGrid && c.gallery) {
+      galeriGrid.innerHTML = c.gallery.map(item => `
+        <div data-cat="${item.cat}" class="galeri-item break-inside-avoid overflow-hidden rounded-xl cursor-pointer group relative" onclick="openLightbox(this)">
+          <img src="${item.url}" alt="${item.alt}" loading="lazy" class="w-full object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all flex items-end p-3 opacity-0 group-hover:opacity-100">
+            <span class="text-white text-[0.75rem] font-semibold">${item.alt}</span>
+          </div>
+        </div>`).join('');
+    }
+
+    // Fleet / Armada cards
+    const fleetGrid = document.getElementById('fleetGrid');
+    if (fleetGrid) {
+      fleetGrid.innerHTML = c.fleet.map(car => {
+        const thumb = car.imageUrl
+          ? `<img src="${car.imageUrl}" alt="${car.name}" class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-300">`
+          : `<div class="h-44 bg-[rgba(201,146,42,0.07)] flex items-center justify-center"><i data-lucide="${car.icon}" class="w-16 h-16 text-[#C9922A]/60"></i></div>`;
+        const price = car.price.toLocaleString('id-ID');
+        const waMsg = encodeURIComponent(`Booking ${car.name}`);
+        return `
+        <div class="group card-bg bg-[rgba(255,255,255,0.03)] border border-[rgba(201,146,42,0.2)] rounded-xl overflow-hidden hover:border-[rgba(201,146,42,0.55)] hover:-translate-y-1 transition-all duration-200">
+          ${thumb}
+          <div class="p-5">
+            <h3 class="font-semibold text-[#F5F0E8] text-[1rem] mb-1">${car.name}</h3>
+            <p class="text-[0.78rem] text-[#7A6A4A] mb-3">${car.description}</p>
+            <div class="flex items-end justify-between">
+              <div>
+                <span class="font-display text-[1.4rem] font-bold text-[#E8B84B]">Rp ${price}</span>
+                <span class="text-[0.72rem] text-[#7A6A4A]">/hari</span>
+              </div>
+              <a href="https://wa.me/${c.whatsapp}?text=${waMsg}" class="bg-[#C9922A] hover:bg-[#E8B84B] text-[#0F0C07] text-[0.78rem] font-bold px-4 py-2 rounded transition-colors">Pesan</a>
+            </div>
+          </div>
+        </div>`;
+      }).join('');
+      // re-render lucide icons for dynamically added elements
+      lucide.createIcons();
+    }
+    document.querySelectorAll('[data-cfg="wa-link"]').forEach(el => {
+      const msg = el.dataset.waMsg || '';
+      el.href = `https://wa.me/${c.whatsapp}${msg ? '?text=' + encodeURIComponent(msg) : ''}`;
+    });
+    document.querySelectorAll('[data-cfg="wa-display"]').forEach(el => el.textContent = c.whatsappDisplay);
+    document.querySelectorAll('[data-cfg="address"]').forEach(el => el.textContent = c.address);
+    document.querySelectorAll('[data-cfg="hours"]').forEach(el => el.textContent = c.operationalHours);
+    document.querySelectorAll('[data-cfg="maps"]').forEach(el => el.src = c.mapsEmbed);
+    document.querySelectorAll('[data-cfg="copyright"]').forEach(el => el.textContent = c.footerCopyright);
+    document.querySelectorAll('[data-cfg="footer-name"]').forEach(el => el.textContent = c.businessName);
+  }
+  applyConfig();
+</script>
+</body>
+</html>
